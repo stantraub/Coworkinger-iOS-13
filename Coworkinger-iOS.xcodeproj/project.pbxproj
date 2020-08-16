@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
-		11A5ECCB24CFFD4F00C41A3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECCA24CFFD4F00C41A3C /* ViewController.swift */; };
-		11A5ECCE24CFFD4F00C41A3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECCC24CFFD4F00C41A3C /* Main.storyboard */; };
-		11A5ECD024CFFD5200C41A3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECCF24CFFD5200C41A3C /* Assets.xcassets */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
+		11A5ECE224CFFE4B00C41A3C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECE124CFFE4B00C41A3C /* LoginController.swift */; };
+		11A5ECE424CFFE5400C41A3C /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECE324CFFE5400C41A3C /* RegistrationController.swift */; };
+		11A5ECE824CFFF7F00C41A3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECE724CFFF7F00C41A3C /* Main.storyboard */; };
+		11A5ECEA24D0023000C41A3C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECE924D0023000C41A3C /* Extensions.swift */; };
+		11A5ECEE24D13C0500C41A3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECED24D13C0500C41A3C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		11A5ECCA24CFFD4F00C41A3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		11A5ECCD24CFFD4F00C41A3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11A5ECCF24CFFD5200C41A3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11A5ECD224CFFD5200C41A3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11A5ECD424CFFD5200C41A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A5ECE124CFFE4B00C41A3C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		11A5ECE324CFFE5400C41A3C /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		11A5ECE724CFFF7F00C41A3C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		11A5ECE924D0023000C41A3C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		11A5ECED24D13C0500C41A3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/UberTutorial/UberTutorial/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				11A5ECC524CFFD4F00C41A3C /* Coworkinger-iOS */,
-				11A5ECC424CFFD4F00C41A3C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,20 +54,80 @@
 				11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		11A5ECC524CFFD4F00C41A3C /* Coworkinger-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				11A5ECDE24CFFDC800C41A3C /* Model */,
+				11A5ECDD24CFFDC700C41A3C /* View */,
+				11A5ECDC24CFFDC500C41A3C /* ViewModel */,
+				11A5ECDB24CFFDC300C41A3C /* Controller */,
+				11A5ECDF24CFFE0900C41A3C /* API */,
+				11A5ECDA24CFFDC000C41A3C /* Utils */,
 				11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */,
 				11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */,
-				11A5ECCA24CFFD4F00C41A3C /* ViewController.swift */,
-				11A5ECCC24CFFD4F00C41A3C /* Main.storyboard */,
-				11A5ECCF24CFFD5200C41A3C /* Assets.xcassets */,
+				11A5ECE724CFFF7F00C41A3C /* Main.storyboard */,
+				11A5ECED24D13C0500C41A3C /* Assets.xcassets */,
 				11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */,
 				11A5ECD424CFFD5200C41A3C /* Info.plist */,
+				11A5ECC424CFFD4F00C41A3C /* Products */,
 			);
 			path = "Coworkinger-iOS";
+			sourceTree = "<group>";
+		};
+		11A5ECDA24CFFDC000C41A3C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				11A5ECE924D0023000C41A3C /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		11A5ECDB24CFFDC300C41A3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				11A5ECE024CFFE3400C41A3C /* Authentication */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		11A5ECDC24CFFDC500C41A3C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		11A5ECDD24CFFDC700C41A3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11A5ECDE24CFFDC800C41A3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		11A5ECDF24CFFE0900C41A3C /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		11A5ECE024CFFE3400C41A3C /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				11A5ECE124CFFE4B00C41A3C /* LoginController.swift */,
+				11A5ECE324CFFE5400C41A3C /* RegistrationController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +188,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A5ECE824CFFF7F00C41A3C /* Main.storyboard in Resources */,
 				11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */,
-				11A5ECD024CFFD5200C41A3C /* Assets.xcassets in Resources */,
-				11A5ECCE24CFFD4F00C41A3C /* Main.storyboard in Resources */,
+				11A5ECEE24D13C0500C41A3C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +201,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11A5ECCB24CFFD4F00C41A3C /* ViewController.swift in Sources */,
+				11A5ECEA24D0023000C41A3C /* Extensions.swift in Sources */,
 				11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */,
+				11A5ECE224CFFE4B00C41A3C /* LoginController.swift in Sources */,
+				11A5ECE424CFFE5400C41A3C /* RegistrationController.swift in Sources */,
 				11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +212,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		11A5ECCC24CFFD4F00C41A3C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11A5ECCD24CFFD4F00C41A3C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
