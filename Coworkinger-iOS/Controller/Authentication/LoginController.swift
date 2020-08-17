@@ -32,26 +32,45 @@ class LoginController: UIViewController {
     
     private let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        let placeholder = NSAttributedString(string: "Email", attributes: [.font: UIFont(name: "Avenir", size: 16) ?? UIFont.systemFont(ofSize: 16),
+                                                                            .foregroundColor: UIColor.darkGray])
+        tf.attributedPlaceholder = placeholder
+        tf.font = UIFont(name: "Avenir", size: 16)
         return tf
     }()
     
     private let passwordTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        let placeholder = NSAttributedString(string: "Password", attributes: [.font: UIFont(name: "Avenir", size: 16) ?? UIFont.systemFont(ofSize: 16),
+                                                                            .foregroundColor: UIColor.darkGray])
+        tf.attributedPlaceholder = placeholder
+        tf.font = UIFont(name: "Avenir", size: 16)
         return tf
+    }()
+    
+    private let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Log In", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 16)
+        button.layer.cornerRadius = 8
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        return button
     }()
     
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         var title = NSMutableAttributedString(string: "Don't have an account?", attributes: [.foregroundColor: UIColor.darkGray,
-                                                                                             .font: UIFont.systemFont(ofSize: 16)])
+                                                                                             .font: UIFont(name: "Avenir", size: 16) ?? UIFont.systemFont(ofSize: 16)])
         title.append(NSAttributedString(string: " Sign up.", attributes: [.foregroundColor: UIColor.systemBlue,
-                                                                          .font: UIFont.boldSystemFont(ofSize: 16)]))
+                                                                          .font: UIFont(name: "Avenir-Heavy", size: 16) ?? UIFont.systemFont(ofSize: 16)]))
         button.setAttributedTitle(title, for: .normal)
         button.addTarget(self, action: #selector(switchToSignup), for: .touchUpInside)
         return button
     }()
+    
+
     
     //MARK: - Lifecycle
     
@@ -70,19 +89,20 @@ class LoginController: UIViewController {
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor)
         titleLabel.centerX(inView: view)
+    
         
-        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 36
+        stack.spacing = 32
         
         view.addSubview(stack)
         stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 32, paddingRight: 32)
         stack.centerX(inView: view)
-        
+
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
-        
+        dontHaveAccountButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func configureNavigationBar() {
@@ -95,5 +115,9 @@ class LoginController: UIViewController {
     @objc func switchToSignup() {
         let controller = RegistrationController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func handleLogin() {
+        print("Handle login here..")
     }
 }
