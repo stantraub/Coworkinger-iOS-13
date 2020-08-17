@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import JGProgressHUD
+import Firebase
 
 class LoginController: UIViewController {
     
     //MARK: - Properties
+    
+    private var viewModel = LoginViewModel()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -36,6 +40,7 @@ class LoginController: UIViewController {
                                                                             .foregroundColor: UIColor.darkGray])
         tf.attributedPlaceholder = placeholder
         tf.font = UIFont(name: "Avenir", size: 16)
+        tf.autocapitalizationType = .none
         return tf
     }()
     
@@ -45,6 +50,8 @@ class LoginController: UIViewController {
                                                                             .foregroundColor: UIColor.darkGray])
         tf.attributedPlaceholder = placeholder
         tf.font = UIFont(name: "Avenir", size: 16)
+        tf.isSecureTextEntry = true
+        tf.autocapitalizationType = .none
         return tf
     }()
     
@@ -54,7 +61,8 @@ class LoginController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 16)
         button.layer.cornerRadius = 8
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemTeal
+        button.isEnabled = false
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -76,10 +84,60 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        logout()
         configureUI()
+        configureTextFieldObservers()
+    }
+    
+    //MARK: - Selectors
+    
+    @objc func switchToSignup() {
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func handleLogin() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: view)
+        
+        AuthService.logUserIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: \(error.localizedDescription)")
+                hud.dismiss()
+                return
+            }
+            hud.dismiss()
+            print("DEBUG: Logged \(email) in successfully")
+            let controller = MainTabBarController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        }
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = emailTextField.text
+        } else {
+            viewModel.password = passwordTextField.text
+        }
+        
+        checkFormStatus()
     }
     
     //MARK: - Helpers
+    
+    func checkFormStatus() {
+        if viewModel.formIsValid {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = .systemBlue
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = .systemTeal
+        }
+    }
     
     func configureUI() {
         configureNavigationBar()
@@ -94,7 +152,7 @@ class LoginController: UIViewController {
         let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 32
+        stack.spacing = 30
         
         view.addSubview(stack)
         stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 32, paddingRight: 32)
@@ -110,14 +168,19 @@ class LoginController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
     }
     
-    //MARK: - Selectors
-    
-    @objc func switchToSignup() {
-        let controller = RegistrationController()
-        navigationController?.pushViewController(controller, animated: true)
+    func configureTextFieldObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
-    @objc func handleLogin() {
-        print("Handle login here..")
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            print("DEBUG: Successfully signed user out")
+        } catch {
+            print("DEBUG: Failed to sign out..")
+        }
     }
+    
+
 }

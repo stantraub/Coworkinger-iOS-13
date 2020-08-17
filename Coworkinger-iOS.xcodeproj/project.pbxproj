@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112CD26B24EB0A560045EE98 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD26A24EB0A560045EE98 /* Service.swift */; };
+		112CD26D24EB0A6D0045EE98 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD26C24EB0A6D0045EE98 /* AuthService.swift */; };
+		112CD26F24EB0C490045EE98 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD26E24EB0C490045EE98 /* MainTabBarController.swift */; };
+		112CD27124EB0E360045EE98 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */; };
+		112CD27324EB213F0045EE98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27224EB213F0045EE98 /* Constants.swift */; };
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
@@ -15,9 +20,17 @@
 		11A5ECE824CFFF7F00C41A3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECE724CFFF7F00C41A3C /* Main.storyboard */; };
 		11A5ECEA24D0023000C41A3C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECE924D0023000C41A3C /* Extensions.swift */; };
 		11A5ECEE24D13C0500C41A3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECED24D13C0500C41A3C /* Assets.xcassets */; };
+		11E3DB6F24EAF16A00966084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11E3DB6E24EAF16A00966084 /* GoogleService-Info.plist */; };
+		B257E84706EB2B5BEAC9EAA4 /* Pods_Coworkinger_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6F8A7A3C0E91DF76715DD2 /* Pods_Coworkinger_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B6794CF58993A935B191E21 /* Pods-Coworkinger-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coworkinger-iOS.release.xcconfig"; path = "Target Support Files/Pods-Coworkinger-iOS/Pods-Coworkinger-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		112CD26A24EB0A560045EE98 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		112CD26C24EB0A6D0045EE98 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		112CD26E24EB0C490045EE98 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		112CD27224EB213F0045EE98 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +41,9 @@
 		11A5ECE724CFFF7F00C41A3C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		11A5ECE924D0023000C41A3C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		11A5ECED24D13C0500C41A3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/UberTutorial/UberTutorial/Assets.xcassets; sourceTree = "<group>"; };
+		11E3DB6E24EAF16A00966084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7A6F8A7A3C0E91DF76715DD2 /* Pods_Coworkinger_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coworkinger_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD3EEE69F4DD06A79D28FE0 /* Pods-Coworkinger-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coworkinger-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Coworkinger-iOS/Pods-Coworkinger-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B257E84706EB2B5BEAC9EAA4 /* Pods_Coworkinger_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				11A5ECC524CFFD4F00C41A3C /* Coworkinger-iOS */,
+				31D733370324A0D6CA7EB1FC /* Pods */,
+				7FD82AB78E10CA2A9AA99D85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +91,7 @@
 				11A5ECED24D13C0500C41A3C /* Assets.xcassets */,
 				11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */,
 				11A5ECD424CFFD5200C41A3C /* Info.plist */,
+				11E3DB6E24EAF16A00966084 /* GoogleService-Info.plist */,
 				11A5ECC424CFFD4F00C41A3C /* Products */,
 			);
 			path = "Coworkinger-iOS";
@@ -81,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				11A5ECE924D0023000C41A3C /* Extensions.swift */,
+				112CD27224EB213F0045EE98 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -89,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				11A5ECE024CFFE3400C41A3C /* Authentication */,
+				112CD26E24EB0C490045EE98 /* MainTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -96,6 +118,7 @@
 		11A5ECDC24CFFDC500C41A3C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -117,6 +140,8 @@
 		11A5ECDF24CFFE0900C41A3C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				112CD26A24EB0A560045EE98 /* Service.swift */,
+				112CD26C24EB0A6D0045EE98 /* AuthService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -130,6 +155,23 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		31D733370324A0D6CA7EB1FC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BFD3EEE69F4DD06A79D28FE0 /* Pods-Coworkinger-iOS.debug.xcconfig */,
+				0B6794CF58993A935B191E21 /* Pods-Coworkinger-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7FD82AB78E10CA2A9AA99D85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A6F8A7A3C0E91DF76715DD2 /* Pods_Coworkinger_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +179,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11A5ECD724CFFD5200C41A3C /* Build configuration list for PBXNativeTarget "Coworkinger-iOS" */;
 			buildPhases = (
+				FEDE896FA5FA8368A0768D1D /* [CP] Check Pods Manifest.lock */,
 				11A5ECBF24CFFD4F00C41A3C /* Sources */,
 				11A5ECC024CFFD4F00C41A3C /* Frameworks */,
 				11A5ECC124CFFD4F00C41A3C /* Resources */,
+				E68AD84207A47D7D9268622F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,12 +233,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				11A5ECE824CFFF7F00C41A3C /* Main.storyboard in Resources */,
+				11E3DB6F24EAF16A00966084 /* GoogleService-Info.plist in Resources */,
 				11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */,
 				11A5ECEE24D13C0500C41A3C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E68AD84207A47D7D9268622F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coworkinger-iOS/Pods-Coworkinger-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coworkinger-iOS/Pods-Coworkinger-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Coworkinger-iOS/Pods-Coworkinger-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEDE896FA5FA8368A0768D1D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Coworkinger-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11A5ECBF24CFFD4F00C41A3C /* Sources */ = {
@@ -203,9 +290,14 @@
 			files = (
 				11A5ECEA24D0023000C41A3C /* Extensions.swift in Sources */,
 				11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */,
+				112CD26F24EB0C490045EE98 /* MainTabBarController.swift in Sources */,
 				11A5ECE224CFFE4B00C41A3C /* LoginController.swift in Sources */,
 				11A5ECE424CFFE5400C41A3C /* RegistrationController.swift in Sources */,
+				112CD27324EB213F0045EE98 /* Constants.swift in Sources */,
 				11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */,
+				112CD27124EB0E360045EE98 /* AuthenticationViewModel.swift in Sources */,
+				112CD26B24EB0A560045EE98 /* Service.swift in Sources */,
+				112CD26D24EB0A6D0045EE98 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +431,7 @@
 		};
 		11A5ECD824CFFD5200C41A3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFD3EEE69F4DD06A79D28FE0 /* Pods-Coworkinger-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -357,6 +450,7 @@
 		};
 		11A5ECD924CFFD5200C41A3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B6794CF58993A935B191E21 /* Pods-Coworkinger-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

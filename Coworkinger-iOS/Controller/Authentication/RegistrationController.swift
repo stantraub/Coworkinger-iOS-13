@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class RegistrationController: UIViewController {
     
     //MARK: - Properties
     
+    private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
     
     private let titleLabel: UILabel = {
@@ -57,6 +59,7 @@ class RegistrationController: UIViewController {
                                                                             .foregroundColor: UIColor.darkGray])
         tf.attributedPlaceholder = placeholder
         tf.font = UIFont(name: "Avenir", size: 16)
+        tf.autocapitalizationType = .none
         return tf
     }()
     
@@ -67,6 +70,7 @@ class RegistrationController: UIViewController {
         tf.attributedPlaceholder = placeholder
         tf.isSecureTextEntry = true
         tf.font = UIFont(name: "Avenir", size: 16)
+        tf.autocapitalizationType = .none
         return tf
     }()
     
@@ -85,12 +89,13 @@ class RegistrationController: UIViewController {
                                                                             .foregroundColor: UIColor.darkGray])
         tf.attributedPlaceholder = placeholder
         tf.font = UIFont(name: "Avenir", size: 16)
+        tf.autocapitalizationType = .none
         return tf
     }()
     
     private let registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemTeal
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 16)
@@ -118,6 +123,7 @@ class RegistrationController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        configureTextFieldObservers()
     }
     
     //MARK: - Selectors
@@ -133,10 +139,53 @@ class RegistrationController: UIViewController {
     }
     
     @objc func handleSignup() {
-        print("Handle signup here...")
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullnameTextField.text else { return }
+        guard let profileImage = profileImage else { return }
+
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: view)
+
+        let credentials = AuthCredentials(email: email, password: password, fullname: fullname, profileImage: profileImage)
+
+        AuthService.registerUser(withCredentials: credentials) { error in
+            if let error = error {
+                print("DEBUG: Error signup user up with \(error.localizedDescription)")
+                hud.dismiss()
+                return
+            }
+
+            hud.dismiss()
+            print("DEBUG: Successfully signed \(fullname) up")
+        }
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        switch sender {
+            case emailTextField:
+                viewModel.email = emailTextField.text
+            case passwordTextField:
+                viewModel.password = passwordTextField.text
+            case fullnameTextField:
+                viewModel.fullname = fullnameTextField.text
+            case usernameTextField:
+                viewModel.username = usernameTextField.text
+            default: return
+        }
+        
+        checkFormStatus()
     }
     
     //MARK: - Helpers
+    
+    func configureTextFieldObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+
+    }
     
     func configureUI() {
         view.backgroundColor = .white
@@ -146,9 +195,9 @@ class RegistrationController: UIViewController {
         titleLabel.centerX(inView: view)
         
         view.addSubview(selectPhotoButton)
-        selectPhotoButton.anchor(top: titleLabel.bottomAnchor, paddingTop: 20)
+        selectPhotoButton.anchor(top: titleLabel.bottomAnchor, paddingTop: 10)
         selectPhotoButton.centerX(inView: view)
-        selectPhotoButton.setDimensions(height: 250, width: 250)
+        selectPhotoButton.setDimensions(height: 225, width: 225)
         
         let stack = UIStackView(arrangedSubviews: [emailContainerView,
                                                    passwordContainerView,
@@ -156,14 +205,24 @@ class RegistrationController: UIViewController {
                                                    usernameContainerView,
                                                    registerButton])
         stack.axis = .vertical
-        stack.spacing = 32
+        stack.spacing = 30
         stack.distribution = .fillProportionally
         
         view.addSubview(stack)
-        stack.anchor(top: selectPhotoButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 15, paddingLeft: 32, paddingRight: 32)
+        stack.anchor(top: selectPhotoButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 32, paddingRight: 32)
         
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
+    }
+    
+    func checkFormStatus() {
+        if viewModel.formIsValid {
+            registerButton.isEnabled = true
+            registerButton.backgroundColor = .systemBlue
+        } else {
+            registerButton.isEnabled = false
+            registerButton.backgroundColor = .systemTeal
+        }
     }
 }
 
@@ -174,7 +233,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         let image = info[.originalImage] as? UIImage
         profileImage = image
         selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
-        selectPhotoButton.layer.cornerRadius = 250 / 2
+        selectPhotoButton.layer.cornerRadius = 225 / 2
         selectPhotoButton.imageView?.contentMode = .scaleAspectFill
         
         dismiss(animated: true, completion: nil)
