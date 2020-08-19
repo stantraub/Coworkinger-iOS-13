@@ -34,7 +34,7 @@ struct AuthService {
                 
                 let data = ["email": credentials.email,
                             "fullname": credentials.fullname,
-                            "profileImage": imageUrl,
+                            "profileImageUrl": imageUrl,
                             "uid": uid] as [String: Any]
                 
                 COLLECTION_USERS.document(uid).setData(data, completion: completion)

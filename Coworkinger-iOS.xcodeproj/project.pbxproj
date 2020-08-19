@@ -9,9 +9,16 @@
 /* Begin PBXBuildFile section */
 		112CD26B24EB0A560045EE98 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD26A24EB0A560045EE98 /* Service.swift */; };
 		112CD26D24EB0A6D0045EE98 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD26C24EB0A6D0045EE98 /* AuthService.swift */; };
-		112CD26F24EB0C490045EE98 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD26E24EB0C490045EE98 /* MainTabBarController.swift */; };
+		112CD26F24EB0C490045EE98 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD26E24EB0C490045EE98 /* MainTabController.swift */; };
 		112CD27124EB0E360045EE98 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */; };
 		112CD27324EB213F0045EE98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27224EB213F0045EE98 /* Constants.swift */; };
+		112CD27524EB543B0045EE98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27424EB543B0045EE98 /* User.swift */; };
+		112CD27724EB57F40045EE98 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27624EB57F40045EE98 /* SearchController.swift */; };
+		112CD27924EB58110045EE98 /* SavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27824EB58110045EE98 /* SavedController.swift */; };
+		112CD27B24EB582D0045EE98 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27A24EB582D0045EE98 /* ProfileController.swift */; };
+		112CD27D24EB87960045EE98 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27C24EB87960045EE98 /* Space.swift */; };
+		112CD27F24EC96FA0045EE98 /* SpaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27E24EC96FA0045EE98 /* SpaceCell.swift */; };
+		112CD28124ECB9C70045EE98 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28024ECB9C70045EE98 /* ProfileHeader.swift */; };
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
@@ -28,9 +35,16 @@
 		0B6794CF58993A935B191E21 /* Pods-Coworkinger-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coworkinger-iOS.release.xcconfig"; path = "Target Support Files/Pods-Coworkinger-iOS/Pods-Coworkinger-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		112CD26A24EB0A560045EE98 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		112CD26C24EB0A6D0045EE98 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		112CD26E24EB0C490045EE98 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		112CD26E24EB0C490045EE98 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		112CD27224EB213F0045EE98 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		112CD27424EB543B0045EE98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		112CD27624EB57F40045EE98 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		112CD27824EB58110045EE98 /* SavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedController.swift; sourceTree = "<group>"; };
+		112CD27A24EB582D0045EE98 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		112CD27C24EB87960045EE98 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
+		112CD27E24EC96FA0045EE98 /* SpaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCell.swift; sourceTree = "<group>"; };
+		112CD28024ECB9C70045EE98 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +124,10 @@
 			isa = PBXGroup;
 			children = (
 				11A5ECE024CFFE3400C41A3C /* Authentication */,
-				112CD26E24EB0C490045EE98 /* MainTabBarController.swift */,
+				112CD26E24EB0C490045EE98 /* MainTabController.swift */,
+				112CD27624EB57F40045EE98 /* SearchController.swift */,
+				112CD27824EB58110045EE98 /* SavedController.swift */,
+				112CD27A24EB582D0045EE98 /* ProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -126,6 +143,8 @@
 		11A5ECDD24CFFDC700C41A3C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				112CD27E24EC96FA0045EE98 /* SpaceCell.swift */,
+				112CD28024ECB9C70045EE98 /* ProfileHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,6 +152,8 @@
 		11A5ECDE24CFFDC800C41A3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				112CD27424EB543B0045EE98 /* User.swift */,
+				112CD27C24EB87960045EE98 /* Space.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,14 +311,21 @@
 			files = (
 				11A5ECEA24D0023000C41A3C /* Extensions.swift in Sources */,
 				11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */,
-				112CD26F24EB0C490045EE98 /* MainTabBarController.swift in Sources */,
+				112CD26F24EB0C490045EE98 /* MainTabController.swift in Sources */,
 				11A5ECE224CFFE4B00C41A3C /* LoginController.swift in Sources */,
 				11A5ECE424CFFE5400C41A3C /* RegistrationController.swift in Sources */,
+				112CD27D24EB87960045EE98 /* Space.swift in Sources */,
+				112CD27F24EC96FA0045EE98 /* SpaceCell.swift in Sources */,
+				112CD27924EB58110045EE98 /* SavedController.swift in Sources */,
+				112CD27724EB57F40045EE98 /* SearchController.swift in Sources */,
+				112CD27B24EB582D0045EE98 /* ProfileController.swift in Sources */,
+				112CD28124ECB9C70045EE98 /* ProfileHeader.swift in Sources */,
 				112CD27324EB213F0045EE98 /* Constants.swift in Sources */,
 				11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */,
 				112CD27124EB0E360045EE98 /* AuthenticationViewModel.swift in Sources */,
 				112CD26B24EB0A560045EE98 /* Service.swift in Sources */,
 				112CD26D24EB0A6D0045EE98 /* AuthService.swift in Sources */,
+				112CD27524EB543B0045EE98 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

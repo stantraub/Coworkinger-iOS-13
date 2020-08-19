@@ -111,8 +111,7 @@ class LoginController: UIViewController {
             }
             hud.dismiss()
             print("DEBUG: Logged \(email) in successfully")
-            let controller = MainTabBarController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            self.dismiss(animated: true, completion: nil)
             
         }
     }

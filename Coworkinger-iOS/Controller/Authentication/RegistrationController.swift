@@ -102,6 +102,7 @@ class RegistrationController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     
@@ -157,7 +158,7 @@ class RegistrationController: UIViewController {
             }
 
             hud.dismiss()
-            print("DEBUG: Successfully signed \(fullname) up")
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
