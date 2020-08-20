@@ -9,20 +9,25 @@
 import UIKit
 import Alamofire
 
-private let reuseIdentifier = "reuseIdentifier"
+private let reuseIdentifier = "SearchCell"
 
-class SearchController: UICollectionViewController {
+class SearchController: UITableViewController {
     
     //MARK: - Properties
     
-    private let spaces = [Space]()
+    private var spaces = [Space]() {
+        didSet { print(spaces) }
+    }
+    
+    private let searchController = UISearchController(searchResultsController: nil)
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .systemBlue
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        configureUI()
+        configureSearchController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,37 +39,59 @@ class SearchController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barStyle = .default
-        navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: - Selectors
     
-    func fetchSpaces() {
+    func fetchSpaces(withQuery query: String) {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer zviqn8ofmwNsQdc578yv18QisgZ__djepMcpt7mEldkAn6XFo1AtNO3KwLnGBRw_GVwOD_ti_S7vuowhnohSek8Qh7djrC5YHYYcYMwDfL8Ng9GRqmfXjELvksgwX3Yx"
         ]
         
-        AF.request("https://api.yelp.com/v3/businesses/bespoke-coworking-san-francisco-6", headers: headers).responseJSON { response in
-            print(response)
+        AF.request("https://api.yelp.com/v3/businesses/search?categories=sharedofficespaces&term=\(query)&location=san_francisco", headers: headers).responseDecodable(of: Space.self) { (response) in
+            guard let space = response.value else { return }
+            print(space)
         }
+        
     }
     
     //MARK: - Helpers
     
-
+    func configureUI() {
+        tableView.backgroundColor = .white
+        tableView.register(SpaceCell.self, forCellReuseIdentifier: reuseIdentifier)
+    }
     
-
+    func configureSearchController() {
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Search for a workspace.."
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
 }
 
-//MARK: - UICollectionViewDelegate/DataSource
+//MARK: - UITableViewDelegate/DataSource
 
 extension SearchController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as UICollectionViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SpaceCell
         return cell
     }
+}
+
+extension SearchController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
+        fetchSpaces(withQuery: searchText)
+    }
+    
+    
+    
 }

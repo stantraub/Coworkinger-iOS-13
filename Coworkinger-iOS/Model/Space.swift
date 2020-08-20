@@ -18,23 +18,23 @@ struct SpaceHours: Codable {
 }
 
 struct SpaceLocation: Codable {
-    let address: String
-    let city: String
-    let zipCode: String
-    let country: String
-    let state: String
-    let coordinates: SpaceCoordinates
+//    let address: String?
+//    let city: String?
+//    let zipCode: String?
+//    let country: String?
+//    let state: String?
+//    let coordinates?: SpaceCoordinates
 }
 
 struct Space: Codable {
-    let id: String
-    let name: String
-    let imageUrl: String
-    let isClosed: String
-    let displayPhone: String
-    let reviewCount: Int
-    let rating: Double
-    let location: SpaceLocation
-    let photos: [String]
-    let hours: SpaceHours
+    let id: String?
+    let name: String?
+//    let imageUrl: String?
+//    let isClosed: String?
+//    let displayPhone: String?
+//    let reviewCount: Int?
+//    let rating: Double?
+//    let location: SpaceLocation
+//    let photos: [String]?
+//    let hours: SpaceHours
 }

@@ -14,6 +14,10 @@ class ProfileHeader: UIView {
     
     var user: User
     
+    var firstName: String {
+        return user.fullname.components(separatedBy: " ").first!
+    }
+    
     lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -27,9 +31,16 @@ class ProfileHeader: UIView {
     
     lazy var welcomeText: UILabel = {
         let label = UILabel()
-        label.text = "Hi, I'm \(user.fullname)"
+        label.text = "Hey, I'm \(self.firstName)"
         label.font = UIFont(name: "Avenir-Heavy", size: 28)
         return label
+    }()
+    
+    private lazy var separatorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return view
     }()
     
     //MARK: - Lifecycle
@@ -37,10 +48,14 @@ class ProfileHeader: UIView {
     init(user: User) {
         self.user = user
         super.init(frame: .zero)
+                        
         let stack = UIStackView(arrangedSubviews: [welcomeText, profileImageView])
         
         addSubview(stack)
-        stack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingLeft: 20, paddingRight: 20)
+        stack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 30, paddingLeft: 20, paddingRight: 20)
+        
+        addSubview(separatorLine)
+        separatorLine.anchor(top: topAnchor)
         
     }
     

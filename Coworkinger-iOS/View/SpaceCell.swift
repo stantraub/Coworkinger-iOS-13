@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpaceCell: UICollectionViewCell {
+class SpaceCell: UITableViewCell {
     //MARK: - Properties
     
     var space: Space? {
@@ -17,8 +17,8 @@ class SpaceCell: UICollectionViewCell {
     
     //MARK: - Lifecycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .red
         configureUI()

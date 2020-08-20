@@ -51,15 +51,14 @@ class MainTabController: UITabBarController {
     func configureViewControllers() {
         guard let user = self.user else { return }
         
-        let search = SearchController(collectionViewLayout: UICollectionViewFlowLayout())
+        let search = SearchController()
         let nav1 = templateNavigationController(image: UIImage(named: "search_unselected"), title: "Search", rootViewcontroller: search)
         
         let saved = SavedController()
         let nav2 = templateNavigationController(image: UIImage(named: "like_unselected"), title: "Saved", rootViewcontroller: saved)
         
-        
         let profile = ProfileController(user: user)
-        let nav3 = templateNavigationController(image: UIImage(named: "home_unselected"), title: "Profile", rootViewcontroller: profile)
+        let nav3 = templateNavigationController(image: UIImage(named: "profile_unselected"), title: "Profile", rootViewcontroller: profile)
         
         viewControllers = [nav1, nav2, nav3]
     }
