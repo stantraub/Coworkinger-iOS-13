@@ -15,12 +15,16 @@ class SpaceCell: UITableViewCell {
         didSet { configureSpace() }
     }
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     //MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = .red
         configureUI()
     }
     
@@ -33,12 +37,14 @@ class SpaceCell: UITableViewCell {
     //MARK: - Helpers
     
     func configureUI() {
-        
+        addSubview(titleLabel)
+        titleLabel.anchor(left: leftAnchor, paddingLeft: 10)
+        titleLabel.centerY(inView: self)
     }
     
     func configureSpace() {
         guard let space = space else { return }
-        print(space)
+        titleLabel.text = space.name
     }
     
     

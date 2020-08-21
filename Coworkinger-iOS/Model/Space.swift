@@ -8,33 +8,33 @@
 
 import Foundation
 
-struct SpaceCoordinates: Codable {
-    let latitude: Float
-    let longitiude: Float
+struct SpaceCoordinates {
+    var latitude: Float
+    var longitiude: Float
 }
 
-struct SpaceHours: Codable {
+struct SpaceHours {
     
 }
 
-struct SpaceLocation: Codable {
-//    let address: String?
-//    let city: String?
-//    let zipCode: String?
-//    let country: String?
-//    let state: String?
-//    let coordinates?: SpaceCoordinates
+struct SpaceLocation {
+    var address: String?
+//    var city: String?
+//    var zipCode: String?
+//    var country: String?
+//    var state: String?
+//    var coordinates?: SpaceCoordinates
 }
 
-struct Space: Codable {
-    let id: String?
-    let name: String?
-//    let imageUrl: String?
-//    let isClosed: String?
-//    let displayPhone: String?
-//    let reviewCount: Int?
-//    let rating: Double?
-//    let location: SpaceLocation
-//    let photos: [String]?
-//    let hours: SpaceHours
+struct Space {
+    var id: String?
+    var name: String?
+    var imageUrl: String?
+//    var isClosed: String?
+//    var displayPhone: String?
+    var reviewCount: Int?
+    var rating: Double?
+    var location: SpaceLocation
+    var photos: [String]?
+//    var hours: SpaceHours
 }

@@ -22,6 +22,9 @@
 		112CD28524EDA9AC0045EE98 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28424EDA9AC0045EE98 /* ProfileViewModel.swift */; };
 		112CD28724EDACB80045EE98 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28624EDACB80045EE98 /* ProfileCell.swift */; };
 		112CD28924EDB2E10045EE98 /* ProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28824EDB2E10045EE98 /* ProfileFooter.swift */; };
+		112CD28D24EEFCBB0045EE98 /* SpaceShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28C24EEFCBB0045EE98 /* SpaceShowController.swift */; };
+		112CD28F24EF081D0045EE98 /* SpacePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28E24EF081D0045EE98 /* SpacePicture.swift */; };
+		112CD29224EF53A20045EE98 /* SpaceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29124EF53A20045EE98 /* SpaceInformation.swift */; };
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
@@ -51,6 +54,9 @@
 		112CD28424EDA9AC0045EE98 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		112CD28624EDACB80045EE98 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		112CD28824EDB2E10045EE98 /* ProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFooter.swift; sourceTree = "<group>"; };
+		112CD28C24EEFCBB0045EE98 /* SpaceShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShowController.swift; sourceTree = "<group>"; };
+		112CD28E24EF081D0045EE98 /* SpacePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePicture.swift; sourceTree = "<group>"; };
+		112CD29124EF53A20045EE98 /* SpaceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInformation.swift; sourceTree = "<group>"; };
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112CD29024EF538A0045EE98 /* SpaceShow */ = {
+			isa = PBXGroup;
+			children = (
+				112CD28E24EF081D0045EE98 /* SpacePicture.swift */,
+				112CD29124EF53A20045EE98 /* SpaceInformation.swift */,
+			);
+			path = SpaceShow;
+			sourceTree = "<group>";
+		};
 		11A5ECBA24CFFD4F00C41A3C = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +149,7 @@
 				112CD27624EB57F40045EE98 /* SearchController.swift */,
 				112CD27824EB58110045EE98 /* SavedController.swift */,
 				112CD27A24EB582D0045EE98 /* ProfileController.swift */,
+				112CD28C24EEFCBB0045EE98 /* SpaceShowController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,6 +166,7 @@
 		11A5ECDD24CFFDC700C41A3C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				112CD29024EF538A0045EE98 /* SpaceShow */,
 				112CD27E24EC96FA0045EE98 /* SpaceCell.swift */,
 				112CD28024ECB9C70045EE98 /* ProfileHeader.swift */,
 				112CD28624EDACB80045EE98 /* ProfileCell.swift */,
@@ -320,6 +337,7 @@
 			files = (
 				11A5ECEA24D0023000C41A3C /* Extensions.swift in Sources */,
 				11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */,
+				112CD29224EF53A20045EE98 /* SpaceInformation.swift in Sources */,
 				112CD26F24EB0C490045EE98 /* MainTabController.swift in Sources */,
 				11A5ECE224CFFE4B00C41A3C /* LoginController.swift in Sources */,
 				11A5ECE424CFFE5400C41A3C /* RegistrationController.swift in Sources */,
@@ -335,9 +353,11 @@
 				112CD27124EB0E360045EE98 /* AuthenticationViewModel.swift in Sources */,
 				112CD26B24EB0A560045EE98 /* Service.swift in Sources */,
 				112CD26D24EB0A6D0045EE98 /* AuthService.swift in Sources */,
+				112CD28D24EEFCBB0045EE98 /* SpaceShowController.swift in Sources */,
 				112CD28724EDACB80045EE98 /* ProfileCell.swift in Sources */,
 				112CD28524EDA9AC0045EE98 /* ProfileViewModel.swift in Sources */,
 				112CD27524EB543B0045EE98 /* User.swift in Sources */,
+				112CD28F24EF081D0045EE98 /* SpacePicture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

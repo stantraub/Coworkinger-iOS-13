@@ -16,7 +16,7 @@ class SearchController: UITableViewController {
     //MARK: - Properties
     
     private var spaces = [Space]() {
-        didSet { print(spaces) }
+        didSet { tableView.reloadData() }
     }
     
     private let searchController = UISearchController(searchResultsController: nil)
@@ -48,11 +48,53 @@ class SearchController: UITableViewController {
             "Authorization": "Bearer zviqn8ofmwNsQdc578yv18QisgZ__djepMcpt7mEldkAn6XFo1AtNO3KwLnGBRw_GVwOD_ti_S7vuowhnohSek8Qh7djrC5YHYYcYMwDfL8Ng9GRqmfXjELvksgwX3Yx"
         ]
         
-        AF.request("https://api.yelp.com/v3/businesses/search?categories=sharedofficespaces&term=\(query)&location=san_francisco", headers: headers).responseDecodable(of: Space.self) { (response) in
-            guard let space = response.value else { return }
-            print(space)
+        AF.request("https://api.yelp.com/v3/businesses/search?categories=sharedofficespaces&term=\(query)&location=san_francisco", headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(value):
+                guard let resp = value as? NSDictionary else { return }
+                guard let businesses = resp.value(forKey: "businesses") as? [NSDictionary] else { return }
+                
+                for business in businesses {
+                    var space = Space()
+                    
+                    space.name = business.value(forKey: "name") as? String
+                    space.id = business.value(forKey: "id") as? String
+                    space.reviewCount = business.value(forKey: "review_count") as? Int
+                    space.rating = business.value(forKey: "rating") as? Double
+                    space.imageUrl = business.value(forKey: "image_url") as? String
+                    space.photos = business.value(forKey: "photos") as? [String]
+                    
+                    if let location = business.value(forKey: "location") as? [String: Any] {
+                        for locationItem in location {
+                            
+//                            let address1 = locationItem.value(forKey: "address1")
+    
+//                            space.location = SpaceLocation(address: locationItem.val)
+                        }
+                    }
+                    
+//                    guard let location = business.value(forKey: "location") as? [NSDictionary] else { return }
+                    
+
+                    
+                    
+//                    if let locationInfo = business.value(forKey: "location") as? [NSDictionary] {
+//                        print(locationInfo)
+//                        let city = locationInfo.value(forKey: "city") as? String
+//                        let zipcode = locationInfo.value(forKey: "zipcode") as? String
+//                        let country = locationInfo.value(forKey: "country") as? String
+//                        let state = locationInfo.value(forKey: "state") as? String
+                        
+//                        space.location = SpaceLocation(address: locationInfo.add, city: city, zipCode: zipcode, country: country, state: state)
+//                    }
+                    
+                    self.spaces.append(space)
+                    
+                }
+            case let .failure(error):
+                print(error)
+            }
         }
-        
     }
     
     //MARK: - Helpers
@@ -76,12 +118,18 @@ class SearchController: UITableViewController {
 
 extension SearchController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return spaces.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SpaceCell
+        cell.space = spaces[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = SpaceShowController(space: spaces[indexPath.row])
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
