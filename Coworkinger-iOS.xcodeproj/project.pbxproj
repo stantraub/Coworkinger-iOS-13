@@ -25,6 +25,8 @@
 		112CD28D24EEFCBB0045EE98 /* SpaceShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28C24EEFCBB0045EE98 /* SpaceShowController.swift */; };
 		112CD28F24EF081D0045EE98 /* SpacePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD28E24EF081D0045EE98 /* SpacePicture.swift */; };
 		112CD29224EF53A20045EE98 /* SpaceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29124EF53A20045EE98 /* SpaceInformation.swift */; };
+		112CD29424F0B9340045EE98 /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29324F0B9340045EE98 /* DiscoverController.swift */; };
+		112CD29624F0BA5D0045EE98 /* DiscoverSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */; };
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
@@ -57,6 +59,8 @@
 		112CD28C24EEFCBB0045EE98 /* SpaceShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShowController.swift; sourceTree = "<group>"; };
 		112CD28E24EF081D0045EE98 /* SpacePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePicture.swift; sourceTree = "<group>"; };
 		112CD29124EF53A20045EE98 /* SpaceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInformation.swift; sourceTree = "<group>"; };
+		112CD29324F0B9340045EE98 /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
+		112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSearchView.swift; sourceTree = "<group>"; };
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				112CD27824EB58110045EE98 /* SavedController.swift */,
 				112CD27A24EB582D0045EE98 /* ProfileController.swift */,
 				112CD28C24EEFCBB0045EE98 /* SpaceShowController.swift */,
+				112CD29324F0B9340045EE98 /* DiscoverController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				112CD28024ECB9C70045EE98 /* ProfileHeader.swift */,
 				112CD28624EDACB80045EE98 /* ProfileCell.swift */,
 				112CD28824EDB2E10045EE98 /* ProfileFooter.swift */,
+				112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,7 +346,9 @@
 				112CD29224EF53A20045EE98 /* SpaceInformation.swift in Sources */,
 				112CD26F24EB0C490045EE98 /* MainTabController.swift in Sources */,
 				11A5ECE224CFFE4B00C41A3C /* LoginController.swift in Sources */,
+				112CD29424F0B9340045EE98 /* DiscoverController.swift in Sources */,
 				11A5ECE424CFFE5400C41A3C /* RegistrationController.swift in Sources */,
+				112CD29624F0BA5D0045EE98 /* DiscoverSearchView.swift in Sources */,
 				112CD27D24EB87960045EE98 /* Space.swift in Sources */,
 				112CD28924EDB2E10045EE98 /* ProfileFooter.swift in Sources */,
 				112CD27F24EC96FA0045EE98 /* SpaceCell.swift in Sources */,

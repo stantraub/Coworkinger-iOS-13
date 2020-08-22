@@ -94,7 +94,7 @@ class SpacePicture: UIView {
     
     func configureGradientLayer() {
         gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradientLayer.locations = [0.0, 0.6]
+        gradientLayer.locations = [0.0, 0.5]
         layer.addSublayer(gradientLayer)
     }
 }

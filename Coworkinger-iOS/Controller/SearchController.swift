@@ -55,38 +55,20 @@ class SearchController: UITableViewController {
                 guard let businesses = resp.value(forKey: "businesses") as? [NSDictionary] else { return }
                 
                 for business in businesses {
-                    var space = Space()
+                    guard let name = business.value(forKey: "name") as? String else { return }
+                    guard let id = business.value(forKey: "id") as? String else { return }
+                    guard let reviewCount = business.value(forKey: "review_count") as? Int else { return }
+                    guard let rating = business.value(forKey: "rating") as? Double else { return }
+                    guard let imageUrl = business.value(forKey: "image_url") as? String else { return }
                     
-                    space.name = business.value(forKey: "name") as? String
-                    space.id = business.value(forKey: "id") as? String
-                    space.reviewCount = business.value(forKey: "review_count") as? Int
-                    space.rating = business.value(forKey: "rating") as? Double
-                    space.imageUrl = business.value(forKey: "image_url") as? String
-                    space.photos = business.value(forKey: "photos") as? [String]
+                    let address = business.value(forKeyPath: "location.address1") as? String
+                    let city = business.value(forKeyPath: "location.city") as? String
+                    let zipCode = business.value(forKeyPath: "location.zip_code") as? String
+                    let country = business.value(forKeyPath: "location.country") as? String
+                    let state = business.value(forKeyPath: "location.state") as? String
+                    let location = SpaceLocation(address: address, city: city, zipCode: zipCode, country: country, state: state)
                     
-                    if let location = business.value(forKey: "location") as? [String: Any] {
-                        for locationItem in location {
-                            
-//                            let address1 = locationItem.value(forKey: "address1")
-    
-//                            space.location = SpaceLocation(address: locationItem.val)
-                        }
-                    }
-                    
-//                    guard let location = business.value(forKey: "location") as? [NSDictionary] else { return }
-                    
-
-                    
-                    
-//                    if let locationInfo = business.value(forKey: "location") as? [NSDictionary] {
-//                        print(locationInfo)
-//                        let city = locationInfo.value(forKey: "city") as? String
-//                        let zipcode = locationInfo.value(forKey: "zipcode") as? String
-//                        let country = locationInfo.value(forKey: "country") as? String
-//                        let state = locationInfo.value(forKey: "state") as? String
-                        
-//                        space.location = SpaceLocation(address: locationInfo.add, city: city, zipCode: zipcode, country: country, state: state)
-//                    }
+                    let space = Space(id: id, name: name, imageUrl: imageUrl, reviewCount: reviewCount, rating: rating, location: location)
                     
                     self.spaces.append(space)
                     
@@ -137,6 +119,7 @@ extension SearchController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchController.searchBar.text?.lowercased() else { return }
+        spaces = []
         fetchSpaces(withQuery: searchText)
     }
     

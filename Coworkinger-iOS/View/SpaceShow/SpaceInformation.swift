@@ -34,8 +34,10 @@ class SpaceInformation: UIView {
         return iv
     }()
     
-    private let locationLabel: UILabel = {
+    private lazy var locationLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont(name: "Avenir", size: 16)
+        label.text = "\(self.space?.location.city ?? ""), \(self.space?.location.state ?? "") \(self.space?.location.country ?? "")"
         return label
     }()
     
@@ -45,7 +47,7 @@ class SpaceInformation: UIView {
         super.init(frame: .zero)
         
         self.space = space
-                        
+                                
         addSubview(nameLabel)
         nameLabel.anchor(top: topAnchor, left: leftAnchor)
         nameLabel.text = space.name
@@ -56,6 +58,9 @@ class SpaceInformation: UIView {
         
         addSubview(reviewStack)
         reviewStack.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, paddingTop: 15)
+        
+        addSubview(locationLabel)
+        locationLabel.anchor(top: reviewStack.bottomAnchor, left: leftAnchor, paddingTop: 6)
     }
     
     required init?(coder: NSCoder) {
