@@ -9,15 +9,36 @@
 import UIKit
 import Alamofire
 
+private let reuseIdentifier = "SpaceShowPictureCell"
+
 class SpaceShowController: UIViewController {
     
     //MARK: - Properties
     
     var spaceID: String
     var space: Space? {
-        didSet { print(space!) }
+        didSet {
+            viewModel = SpaceShowViewModel(space: space!)
+            collectionView.reloadData()
+        }
     }
-//    lazy var mainPhotoView = SpacePicture(photo: space?.imageUrl ?? "")
+    
+    var viewModel: SpaceShowViewModel?
+    
+    
+    private lazy var collectionView: UICollectionView = {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width + 100)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let cv = UICollectionView(frame: frame, collectionViewLayout: layout)
+        cv.isPagingEnabled = true
+        cv.delegate = self
+        cv.dataSource = self
+        cv.showsHorizontalScrollIndicator = false
+        cv.register(SpaceShowPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        return cv
+    }()
 //    lazy var informationView = SpaceInformation(space: space!)
     
     //MARK: - Lifecycle
@@ -77,9 +98,8 @@ class SpaceShowController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isHidden = true
 //
-//        view.addSubview(mainPhotoView)
-//        mainPhotoView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 275)
-//        mainPhotoView.delegate = self
+        view.addSubview(collectionView)
+
 //
 //        view.addSubview(informationView)
 //        informationView.anchor(top: mainPhotoView.bottomAnchor, left: view.leftAnchor,
@@ -90,10 +110,38 @@ class SpaceShowController: UIViewController {
 
 }
 
-extension SpaceShowController: SpacePictureDelegate {
-    func handleBackButtonTapped() {
-        navigationController?.popViewController(animated: true)
+//MARK: - UICollectionViewDelegate
+
+extension SpaceShowController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.imageURLs.count ?? 3
     }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SpaceShowPhotoCell
+        cell.imageView.sd_setImage(with: viewModel?.imageURLs[indexPath.row])
+        return cell
+    }
+}
+
+//MARK: - UICollectionViewDataSource
+
+extension SpaceShowController: UICollectionViewDataSource {
     
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension SpaceShowController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.width + 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

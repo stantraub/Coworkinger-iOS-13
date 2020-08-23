@@ -34,7 +34,7 @@ struct Space {
     var reviewCount: Int?
     var rating: Double?
 //    var location: SpaceLocation
-    var photos: [String]?
+    var photos: [String]
 //    var hours: SpaceHours
 }
 
