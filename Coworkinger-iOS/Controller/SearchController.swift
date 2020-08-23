@@ -15,7 +15,7 @@ class SearchController: UITableViewController {
     
     //MARK: - Properties
     
-    private var spaces = [Space]() {
+    private var spaces = [SpaceSearchCell]() {
         didSet { tableView.reloadData() }
     }
     
@@ -57,18 +57,8 @@ class SearchController: UITableViewController {
                 for business in businesses {
                     guard let name = business.value(forKey: "name") as? String else { return }
                     guard let id = business.value(forKey: "id") as? String else { return }
-                    guard let reviewCount = business.value(forKey: "review_count") as? Int else { return }
-                    guard let rating = business.value(forKey: "rating") as? Double else { return }
-                    guard let imageUrl = business.value(forKey: "image_url") as? String else { return }
                     
-                    let address = business.value(forKeyPath: "location.address1") as? String
-                    let city = business.value(forKeyPath: "location.city") as? String
-                    let zipCode = business.value(forKeyPath: "location.zip_code") as? String
-                    let country = business.value(forKeyPath: "location.country") as? String
-                    let state = business.value(forKeyPath: "location.state") as? String
-                    let location = SpaceLocation(address: address, city: city, zipCode: zipCode, country: country, state: state)
-                    
-                    let space = Space(id: id, name: name, imageUrl: imageUrl, reviewCount: reviewCount, rating: rating, location: location)
+                    let space = SpaceSearchCell(id: id, name: name)
                     
                     self.spaces.append(space)
                     
@@ -104,13 +94,15 @@ extension SearchController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let space = spaces[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SpaceCell
-        cell.space = spaces[indexPath.row]
+        cell.space = SpaceSearchCell(id: space.id, name: space.name)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = SpaceShowController(space: spaces[indexPath.row])
+        guard let spaceID = spaces[indexPath.row].id else { return }
+        let controller = SpaceShowController(spaceID: spaceID)
         navigationController?.pushViewController(controller, animated: true)
     }
 }

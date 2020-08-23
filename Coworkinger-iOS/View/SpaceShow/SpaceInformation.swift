@@ -37,7 +37,7 @@ class SpaceInformation: UIView {
     private lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir", size: 16)
-        label.text = "\(self.space?.location.city ?? ""), \(self.space?.location.state ?? "") \(self.space?.location.country ?? "")"
+//        label.text = "\(self.space?.location.city ?? ""), \(self.space?.location.state ?? "") \(self.space?.location.country ?? "")"
         return label
     }()
     

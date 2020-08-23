@@ -11,7 +11,7 @@ import UIKit
 class SpaceCell: UITableViewCell {
     //MARK: - Properties
     
-    var space: Space? {
+    var space: SpaceSearchCell? {
         didSet { configureSpace() }
     }
     
@@ -33,6 +33,8 @@ class SpaceCell: UITableViewCell {
     }
     
     //MARK: - Selectors
+    
+    //MARK: - API
     
     //MARK: - Helpers
     

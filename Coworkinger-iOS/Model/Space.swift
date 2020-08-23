@@ -29,12 +29,17 @@ struct SpaceLocation {
 struct Space {
     var id: String?
     var name: String?
-    var imageUrl: String?
 //    var isClosed: String?
 //    var displayPhone: String?
     var reviewCount: Int?
     var rating: Double?
-    var location: SpaceLocation
-//    var photos: [String]?
+//    var location: SpaceLocation
+    var photos: [String]?
 //    var hours: SpaceHours
+}
+
+struct SpaceSearchCell {
+    var id: String?
+    var name: String?
+    //    var imageUrl: String?
 }

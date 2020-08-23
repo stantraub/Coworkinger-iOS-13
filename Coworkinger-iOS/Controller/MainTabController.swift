@@ -51,8 +51,11 @@ class MainTabController: UITabBarController {
     func configureViewControllers() {
         guard let user = self.user else { return }
         
-        let discover = DiscoverController()
-        let nav1 = templateNavigationController(image: UIImage(named: "search_unselected"), title: "Discover", rootViewcontroller: discover)
+        let search = SearchController()
+        let nav1 = templateNavigationController(image: UIImage(named: "search_unselected"), title: "Search", rootViewcontroller: search)
+        
+//        let discover = DiscoverController()
+//        let nav1 = templateNavigationController(image: UIImage(named: "search_unselected"), title: "Discover", rootViewcontroller: discover)
         
         let saved = SavedController()
         let nav2 = templateNavigationController(image: UIImage(named: "like_unselected"), title: "Saved", rootViewcontroller: saved)

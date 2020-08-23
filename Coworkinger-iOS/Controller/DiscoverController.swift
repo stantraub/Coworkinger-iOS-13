@@ -19,7 +19,7 @@ class DiscoverController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGroupedBackground
         navigationController?.navigationBar.isHidden = true
         configureUI()
     }
