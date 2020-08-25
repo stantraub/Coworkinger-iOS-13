@@ -15,19 +15,30 @@ class SpaceShowController: UIViewController {
     
     //MARK: - Properties
     
+    
+    
     var spaceID: String
     var space: Space? {
         didSet {
             viewModel = SpaceShowViewModel(space: space!)
+            informationView = SpaceInformation(space: space!)
+            
+            view.addSubview(informationView!)
+            informationView?.anchor(top: collectionView.bottomAnchor, left: view.leftAnchor,
+                                   paddingTop: 15, paddingLeft: 20, paddingRight: 20,
+                                   width: view.frame.width, height: 150)
+            
             collectionView.reloadData()
         }
     }
     
     var viewModel: SpaceShowViewModel?
+    var informationView: SpaceInformation?
     
+    private let gradientLayer = CAGradientLayer()
     
     private lazy var collectionView: UICollectionView = {
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width + 100)
+        let frame = CGRect(x: 0, y: -25, width: view.frame.width, height: 350)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -39,13 +50,13 @@ class SpaceShowController: UIViewController {
         cv.register(SpaceShowPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         return cv
     }()
-//    lazy var informationView = SpaceInformation(space: space!)
+    
+    
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchSpace(withID: spaceID)
         configureUI()
     }
@@ -99,14 +110,19 @@ class SpaceShowController: UIViewController {
         navigationController?.navigationBar.isHidden = true
 //
         view.addSubview(collectionView)
+//        collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
 
 //
-//        view.addSubview(informationView)
-//        informationView.anchor(top: mainPhotoView.bottomAnchor, left: view.leftAnchor,
-//                               paddingTop: 15, paddingLeft: 20,
-//                               width: view.frame.width - 40, height: 150)
+        
+
         
     }
+    
+
+
+    //    override func layoutSubviews() {
+    //        gradientLayer.frame = self.frame
+    //    }
 
 }
 
@@ -134,7 +150,7 @@ extension SpaceShowController: UICollectionViewDataSource {
 
 extension SpaceShowController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.width + 100)
+        return CGSize(width: view.frame.width, height: 350)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

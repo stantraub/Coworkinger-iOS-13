@@ -20,6 +20,7 @@ class SpaceShowPhotoCell: UICollectionViewCell {
         super.init(frame: frame)
          
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
         addSubview(imageView)
         imageView.fillSuperview()
@@ -32,11 +33,7 @@ class SpaceShowPhotoCell: UICollectionViewCell {
     }
 }
 
-//    private let gradientLayer = CAGradientLayer()
 
-//    override func layoutSubviews() {
-//        gradientLayer.frame = self.frame
-//    }
     
 //    lazy var photo: UIImageView = {
 //        let iv = UIImageView()
