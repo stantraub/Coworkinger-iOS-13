@@ -34,29 +34,6 @@ class SpaceShowPhotoCell: UICollectionViewCell {
 }
 
 
-    
-//    lazy var photo: UIImageView = {
-//        let iv = UIImageView()
-//        iv.sd_setImage(with: imageUrl)
-//        iv.contentMode = .scaleAspectFill
-//        iv.clipsToBounds = true
-//        return iv
-//    }()
-//
-//    private let backButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setImage(UIImage(systemName: "chevron.left")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
-//        button.addTarget(self, action: #selector(handleBackButtonTapped), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    private let saveButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
-//        button.addTarget(self, action: #selector(handleLikeTapped), for: .touchUpInside)
-//        return button
-//    }()
-
     //MARK: - Helpers
     
 //    func configureActionButtons() {
@@ -70,8 +47,4 @@ class SpaceShowPhotoCell: UICollectionViewCell {
 //
 //    }
     
-//    func configureGradientLayer() {
-//        gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-//        gradientLayer.locations = [0.0, 0.5]
-//        layer.addSublayer(gradientLayer)
-//    }
+

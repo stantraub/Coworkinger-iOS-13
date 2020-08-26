@@ -37,6 +37,20 @@ class SpaceShowController: UIViewController {
     
     private let gradientLayer = CAGradientLayer()
     
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.left")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
+        button.addTarget(self, action: #selector(handleBackButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private let saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
+        button.addTarget(self, action: #selector(handleLikeTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let frame = CGRect(x: 0, y: -25, width: view.frame.width, height: 350)
         let layout = UICollectionViewFlowLayout()
@@ -48,6 +62,12 @@ class SpaceShowController: UIViewController {
         cv.dataSource = self
         cv.showsHorizontalScrollIndicator = false
         cv.register(SpaceShowPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradientLayer.locations = [0.0, 0.5]
+        gradientLayer.frame = frame
+        cv.layer.addSublayer(gradientLayer)
+        
         return cv
     }()
     
@@ -73,6 +93,14 @@ class SpaceShowController: UIViewController {
     }
     
     //MARK: - Selectors
+    
+    @objc func handleBackButtonTapped() {
+        
+    }
+    
+    @objc func handleLikeTapped() {
+        
+    }
     
     //MARK: - API
     
@@ -108,21 +136,9 @@ class SpaceShowController: UIViewController {
     func configureUI() {
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isHidden = true
-//
+        
         view.addSubview(collectionView)
-//        collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
-
-//
-        
-
-        
     }
-    
-
-
-    //    override func layoutSubviews() {
-    //        gradientLayer.frame = self.frame
-    //    }
 
 }
 
