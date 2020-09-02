@@ -14,6 +14,15 @@ class DiscoverController: UIViewController {
     
     private let searchBoxView = DiscoverSearchView()
     
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        
+        view.addSubview(searchBoxView)
+        searchBoxView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+        
+        return view
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -29,8 +38,11 @@ class DiscoverController: UIViewController {
     //MARK: - Helpers
     
     func configureUI() {
-        view.addSubview(searchBoxView)
-        searchBoxView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)
+        view.addSubview(scrollView)
+        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
+//
+//        view.addSubview(searchBoxView)
+//        searchBoxView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)
         searchBoxView.delegate = self
     }
 }
