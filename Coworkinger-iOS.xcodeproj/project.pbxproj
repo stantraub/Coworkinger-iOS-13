@@ -13,7 +13,7 @@
 		112CD27124EB0E360045EE98 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */; };
 		112CD27324EB213F0045EE98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27224EB213F0045EE98 /* Constants.swift */; };
 		112CD27524EB543B0045EE98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27424EB543B0045EE98 /* User.swift */; };
-		112CD27724EB57F40045EE98 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27624EB57F40045EE98 /* SearchController.swift */; };
+		112CD27724EB57F40045EE98 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27624EB57F40045EE98 /* SearchResultsController.swift */; };
 		112CD27924EB58110045EE98 /* SavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27824EB58110045EE98 /* SavedController.swift */; };
 		112CD27B24EB582D0045EE98 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27A24EB582D0045EE98 /* ProfileController.swift */; };
 		112CD27D24EB87960045EE98 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD27C24EB87960045EE98 /* Space.swift */; };
@@ -28,6 +28,7 @@
 		112CD29424F0B9340045EE98 /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29324F0B9340045EE98 /* DiscoverController.swift */; };
 		112CD29624F0BA5D0045EE98 /* DiscoverSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */; };
 		112CD29824F2FE670045EE98 /* SpaceShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29724F2FE670045EE98 /* SpaceShowViewModel.swift */; };
+		11906BB025004E70009326D7 /* DiscoverCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11906BAF25004E70009326D7 /* DiscoverCityCell.swift */; };
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
@@ -48,7 +49,7 @@
 		112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		112CD27224EB213F0045EE98 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		112CD27424EB543B0045EE98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		112CD27624EB57F40045EE98 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		112CD27624EB57F40045EE98 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		112CD27824EB58110045EE98 /* SavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedController.swift; sourceTree = "<group>"; };
 		112CD27A24EB582D0045EE98 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		112CD27C24EB87960045EE98 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		112CD29324F0B9340045EE98 /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSearchView.swift; sourceTree = "<group>"; };
 		112CD29724F2FE670045EE98 /* SpaceShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShowViewModel.swift; sourceTree = "<group>"; };
+		11906BAF25004E70009326D7 /* DiscoverCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCityCell.swift; sourceTree = "<group>"; };
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,15 @@
 				112CD29124EF53A20045EE98 /* SpaceInformation.swift */,
 			);
 			path = SpaceShow;
+			sourceTree = "<group>";
+		};
+		11906BAE25004E35009326D7 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */,
+				11906BAF25004E70009326D7 /* DiscoverCityCell.swift */,
+			);
+			path = Discover;
 			sourceTree = "<group>";
 		};
 		11A5ECBA24CFFD4F00C41A3C = {
@@ -152,7 +163,7 @@
 			children = (
 				11A5ECE024CFFE3400C41A3C /* Authentication */,
 				112CD26E24EB0C490045EE98 /* MainTabController.swift */,
-				112CD27624EB57F40045EE98 /* SearchController.swift */,
+				112CD27624EB57F40045EE98 /* SearchResultsController.swift */,
 				112CD27824EB58110045EE98 /* SavedController.swift */,
 				112CD27A24EB582D0045EE98 /* ProfileController.swift */,
 				112CD28C24EEFCBB0045EE98 /* SpaceShowController.swift */,
@@ -174,12 +185,12 @@
 		11A5ECDD24CFFDC700C41A3C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				11906BAE25004E35009326D7 /* Discover */,
 				112CD29024EF538A0045EE98 /* SpaceShow */,
 				112CD27E24EC96FA0045EE98 /* SpaceCell.swift */,
 				112CD28024ECB9C70045EE98 /* ProfileHeader.swift */,
 				112CD28624EDACB80045EE98 /* ProfileCell.swift */,
 				112CD28824EDB2E10045EE98 /* ProfileFooter.swift */,
-				112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -356,10 +367,11 @@
 				112CD28924EDB2E10045EE98 /* ProfileFooter.swift in Sources */,
 				112CD27F24EC96FA0045EE98 /* SpaceCell.swift in Sources */,
 				112CD27924EB58110045EE98 /* SavedController.swift in Sources */,
-				112CD27724EB57F40045EE98 /* SearchController.swift in Sources */,
+				112CD27724EB57F40045EE98 /* SearchResultsController.swift in Sources */,
 				112CD27B24EB582D0045EE98 /* ProfileController.swift in Sources */,
 				112CD29824F2FE670045EE98 /* SpaceShowViewModel.swift in Sources */,
 				112CD28124ECB9C70045EE98 /* ProfileHeader.swift in Sources */,
+				11906BB025004E70009326D7 /* DiscoverCityCell.swift in Sources */,
 				112CD27324EB213F0045EE98 /* Constants.swift in Sources */,
 				11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */,
 				112CD27124EB0E360045EE98 /* AuthenticationViewModel.swift in Sources */,

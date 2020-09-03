@@ -8,21 +8,12 @@
 
 import UIKit
 
-class DiscoverController: UIViewController {
+class DiscoverController: UITableViewController {
     
     //MARK: - Properties
-    
-    private let searchBoxView = DiscoverSearchView()
-    
-    private lazy var scrollView: UIScrollView = {
-        let view = UIScrollView()
-        
-        view.addSubview(searchBoxView)
-        searchBoxView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
-        
-        return view
-    }()
-    
+    var query = ""
+    private lazy var searchBoxView = DiscoverSearchView()
+
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -38,18 +29,21 @@ class DiscoverController: UIViewController {
     //MARK: - Helpers
     
     func configureUI() {
-        view.addSubview(scrollView)
-        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
+        tableView.tableHeaderView = searchBoxView
+        searchBoxView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 250)
+        searchBoxView.delegate = self
+
+
 //
 //        view.addSubview(searchBoxView)
 //        searchBoxView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)
-        searchBoxView.delegate = self
+//        searchBoxView.delegate = self
     }
 }
 
 extension DiscoverController: DiscoverSearchViewDelegate {
-    func handleSearchButtonTapped() {
-        let controller = SearchController()
+    func handleSearchButtonTapped(withQuery query: String) {
+        let controller = SearchResultsController(query: query)
         navigationController?.pushViewController(controller, animated: true)
     }
     

@@ -11,9 +11,11 @@ import Alamofire
 
 private let reuseIdentifier = "SearchCell"
 
-class SearchController: UITableViewController {
+class SearchResultsController: UITableViewController {
     
     //MARK: - Properties
+    
+    var query: String
     
     private var spaces = [SpaceSearchCell]() {
         didSet { tableView.reloadData() }
@@ -22,6 +24,16 @@ class SearchController: UITableViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     
     //MARK: - Lifecycle
+    
+    init(query: String) {
+        self.query = query
+
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +90,7 @@ class SearchController: UITableViewController {
     
     func configureSearchController() {
         searchController.searchBar.delegate = self
+        print(query)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search for a workspace.."
@@ -88,7 +101,7 @@ class SearchController: UITableViewController {
 
 //MARK: - UITableViewDelegate/DataSource
 
-extension SearchController {
+extension SearchResultsController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return spaces.count
     }
@@ -107,7 +120,7 @@ extension SearchController {
     }
 }
 
-extension SearchController: UISearchBarDelegate {
+extension SearchResultsController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchController.searchBar.text?.lowercased() else { return }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DiscoverSearchViewDelegate: class {
-    func handleSearchButtonTapped()
+    func handleSearchButtonTapped(withQuery query: String)
 }
 
 class DiscoverSearchView: UIView {
@@ -56,6 +56,7 @@ class DiscoverSearchView: UIView {
         let placeholder = NSAttributedString(string: "Enter a city to work at", attributes: [.foregroundColor: UIColor.lightGray,
                                                                       .font: UIFont(name: "Avenir", size: 16) ?? UIFont.systemFont(ofSize: 16)])
         tf.attributedPlaceholder = placeholder
+        tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return tf
     }()
     
@@ -95,7 +96,11 @@ class DiscoverSearchView: UIView {
     //MARK: - Selectors
     
     @objc func handleSearchButtonTapped() {
-        delegate?.handleSearchButtonTapped()
+        delegate?.handleSearchButtonTapped(withQuery: searchText)
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        searchText = searchField.text!
     }
     
     //MARK: - Helpers
