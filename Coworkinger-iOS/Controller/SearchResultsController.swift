@@ -11,17 +11,29 @@ import Alamofire
 
 private let reuseIdentifier = "SearchCell"
 
-class SearchResultsController: UITableViewController {
+class SearchResultsController: UIViewController {
     
     //MARK: - Properties
     
     var query: String
+    lazy var searchHeaderView = SearchResultsHeaderView(query: query)
+    
+    private lazy var collectionView: UICollectionView = {
+//        let frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.delegate = self
+        cv.dataSource = self
+        cv.showsVerticalScrollIndicator = false
+        cv.register(SpaceCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        return cv
+    }()
     
     private var spaces = [SpaceSearchCell]() {
-        didSet { tableView.reloadData() }
+        didSet { collectionView.reloadData() }
     }
-    
-    private let searchController = UISearchController(searchResultsController: nil)
     
     //MARK: - Lifecycle
     
@@ -38,19 +50,8 @@ class SearchResultsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchSpaces(withQuery: query)
         configureUI()
-        configureSearchController()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        fetchSpaces()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.barStyle = .default
     }
     
     //MARK: - Selectors
@@ -60,7 +61,7 @@ class SearchResultsController: UITableViewController {
             "Authorization": "Bearer zviqn8ofmwNsQdc578yv18QisgZ__djepMcpt7mEldkAn6XFo1AtNO3KwLnGBRw_GVwOD_ti_S7vuowhnohSek8Qh7djrC5YHYYcYMwDfL8Ng9GRqmfXjELvksgwX3Yx"
         ]
         
-        AF.request("https://api.yelp.com/v3/businesses/search?categories=sharedofficespaces&term=\(query)&location=san_francisco", headers: headers).responseJSON { (response) in
+        AF.request("https://api.yelp.com/v3/businesses/search?categories=sharedofficespaces&term=shared_office_spaces&location=\(query)", headers: headers).responseJSON { (response) in
             switch response.result {
             case let .success(value):
                 guard let resp = value as? NSDictionary else { return }
@@ -84,50 +85,50 @@ class SearchResultsController: UITableViewController {
     //MARK: - Helpers
     
     func configureUI() {
-        tableView.backgroundColor = .white
-        tableView.register(SpaceCell.self, forCellReuseIdentifier: reuseIdentifier)
-    }
-    
-    func configureSearchController() {
-        searchController.searchBar.delegate = self
-        print(query)
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Search for a workspace.."
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        view.backgroundColor = .white
+        
+        view.addSubview(searchHeaderView)
+        searchHeaderView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 100)
+        
+        view.addSubview(collectionView)
+        collectionView.anchor(top: searchHeaderView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
+//        searchHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
     }
 }
 
-//MARK: - UITableViewDelegate/DataSource
+//MARK: - UICollectionViewDataSource
 
-extension SearchResultsController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension SearchResultsController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return spaces.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let space = spaces[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SpaceCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SpaceCell
         cell.space = SpaceSearchCell(id: space.id, name: space.name)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let spaceID = spaces[indexPath.row].id else { return }
-        let controller = SpaceShowController(spaceID: spaceID)
-        navigationController?.pushViewController(controller, animated: true)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let spaceID = spaces[indexPath.row].id else { return }
+//        let controller = SpaceShowController(spaceID: spaceID)
+//        navigationController?.pushViewController(controller, animated: true)
+//    }
 }
 
-extension SearchResultsController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
-        spaces = []
-        fetchSpaces(withQuery: searchText)
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension SearchResultsController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 200)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

@@ -15,8 +15,6 @@ class SpaceShowController: UIViewController {
     
     //MARK: - Properties
     
-    
-    
     var spaceID: String
     var space: Space? {
         didSet {
@@ -77,6 +75,7 @@ class SpaceShowController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         fetchSpace(withID: spaceID)
         configureUI()
     }

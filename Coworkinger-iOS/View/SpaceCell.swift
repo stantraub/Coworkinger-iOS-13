@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpaceCell: UITableViewCell {
+class SpaceCell: UICollectionViewCell {
     //MARK: - Properties
     
     var space: SpaceSearchCell? {
@@ -22,8 +22,8 @@ class SpaceCell: UITableViewCell {
     
     //MARK: - Lifecycle
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         configureUI()
     }
@@ -39,6 +39,7 @@ class SpaceCell: UITableViewCell {
     //MARK: - Helpers
     
     func configureUI() {
+        backgroundColor = .systemBlue
         addSubview(titleLabel)
         titleLabel.anchor(left: leftAnchor, paddingLeft: 10)
         titleLabel.centerY(inView: self)

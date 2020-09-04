@@ -29,6 +29,7 @@
 		112CD29624F0BA5D0045EE98 /* DiscoverSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */; };
 		112CD29824F2FE670045EE98 /* SpaceShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29724F2FE670045EE98 /* SpaceShowViewModel.swift */; };
 		11906BB025004E70009326D7 /* DiscoverCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11906BAF25004E70009326D7 /* DiscoverCityCell.swift */; };
+		11A4C84E2501C2710038C2DA /* SearchResultsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4C84D2501C2710038C2DA /* SearchResultsHeaderView.swift */; };
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
@@ -65,6 +66,7 @@
 		112CD29524F0BA5D0045EE98 /* DiscoverSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSearchView.swift; sourceTree = "<group>"; };
 		112CD29724F2FE670045EE98 /* SpaceShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShowViewModel.swift; sourceTree = "<group>"; };
 		11906BAF25004E70009326D7 /* DiscoverCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCityCell.swift; sourceTree = "<group>"; };
+		11A4C84D2501C2710038C2DA /* SearchResultsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsHeaderView.swift; sourceTree = "<group>"; };
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,24 @@
 				11906BAF25004E70009326D7 /* DiscoverCityCell.swift */,
 			);
 			path = Discover;
+			sourceTree = "<group>";
+		};
+		11A4C849250161000038C2DA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				112CD28024ECB9C70045EE98 /* ProfileHeader.swift */,
+				112CD28624EDACB80045EE98 /* ProfileCell.swift */,
+				112CD28824EDB2E10045EE98 /* ProfileFooter.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		11A4C84C2501C0820038C2DA /* SearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				11A4C84D2501C2710038C2DA /* SearchResultsHeaderView.swift */,
+			);
+			path = SearchResults;
 			sourceTree = "<group>";
 		};
 		11A5ECBA24CFFD4F00C41A3C = {
@@ -185,12 +205,11 @@
 		11A5ECDD24CFFDC700C41A3C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				11A4C84C2501C0820038C2DA /* SearchResults */,
+				11A4C849250161000038C2DA /* Profile */,
 				11906BAE25004E35009326D7 /* Discover */,
 				112CD29024EF538A0045EE98 /* SpaceShow */,
 				112CD27E24EC96FA0045EE98 /* SpaceCell.swift */,
-				112CD28024ECB9C70045EE98 /* ProfileHeader.swift */,
-				112CD28624EDACB80045EE98 /* ProfileCell.swift */,
-				112CD28824EDB2E10045EE98 /* ProfileFooter.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -359,6 +378,7 @@
 				11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */,
 				112CD29224EF53A20045EE98 /* SpaceInformation.swift in Sources */,
 				112CD26F24EB0C490045EE98 /* MainTabController.swift in Sources */,
+				11A4C84E2501C2710038C2DA /* SearchResultsHeaderView.swift in Sources */,
 				11A5ECE224CFFE4B00C41A3C /* LoginController.swift in Sources */,
 				112CD29424F0B9340045EE98 /* DiscoverController.swift in Sources */,
 				11A5ECE424CFFE5400C41A3C /* RegistrationController.swift in Sources */,

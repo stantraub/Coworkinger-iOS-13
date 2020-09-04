@@ -24,6 +24,10 @@ class DiscoverController: UITableViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barStyle = .default
+    }
     //MARK: - Selectors
     
     //MARK: - Helpers
@@ -32,12 +36,6 @@ class DiscoverController: UITableViewController {
         tableView.tableHeaderView = searchBoxView
         searchBoxView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 250)
         searchBoxView.delegate = self
-
-
-//
-//        view.addSubview(searchBoxView)
-//        searchBoxView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)
-//        searchBoxView.delegate = self
     }
 }
 
