@@ -138,6 +138,13 @@ extension SearchResultsController: UICollectionViewDelegate {
             zipCode: space.zipCode,
             country: space.country
         )
+        
+//        cell.layer.cornerRadius = 22
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 0.6
+            cell.layer.shadowOffset = .zero
+            cell.layer.shadowRadius = 5
+
         return cell
     }
 }
@@ -164,6 +171,6 @@ extension SearchResultsController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 30
     }
 }

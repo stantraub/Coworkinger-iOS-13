@@ -79,48 +79,39 @@ class SpaceCell: UICollectionViewCell {
     //MARK: - Helpers
     
     func configureUI() {
-        backgroundColor = .systemGroupedBackground
+        backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
         
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 3
-
-        layer.cornerRadius = 22
-        layer.masksToBounds = true
     }
     
     func configureSpace() {
         guard let space = self.space else { return }
  
+        addSubview(imageView)
+        imageView.sd_setImage(with: URL(string: space.imageUrl ?? "https://www.dwrl.utexas.edu/wp-content/uploads/2017/02/yelp-logo-vector.jpg"))
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.sd_setImage(with: URL(string: space.imageUrl ?? "https://www.dwrl.utexas.edu/wp-content/uploads/2017/02/yelp-logo-vector.jpg"))
-        
-        addSubview(imageView)
-        imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: 225)
-//        imageView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, width: frame.width, height: 225)
-        imageView.setDimensions(height: frame.width / 2, width: frame.width)
-        
+        imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height / 2)
+//        imageView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, width: frame.width, height: frame.height / 2)
+
         addSubview(saveButton)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         saveButton.anchor(top: topAnchor, right: rightAnchor, paddingTop: 10, paddingRight: 10)
-        
+
         let reviewInfoStack = UIStackView(arrangedSubviews: [reviewStar, reviewsLabel])
         reviewInfoStack.axis = .horizontal
         reviewInfoStack.spacing = 6
         reviewsLabel.text = "\(space.rating ?? 0.0) (\(space.reviewCount ?? 0))"
         addSubview(reviewInfoStack)
         reviewInfoStack.anchor(top: imageView.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 10)
-        
+
         addSubview(titleLabel)
         titleLabel.text = space.name
         titleLabel.anchor(top: reviewInfoStack.bottomAnchor, left: leftAnchor, paddingTop: 5, paddingLeft: 10)
-        
+
         phoneLabel.text = space.phone
         addSubview(phoneLabel)
         phoneLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, paddingTop: 5, paddingLeft: 10)
-        
+
         locationLabel.text = "\(space.city ?? "") · \(space.country ?? "")"
         addSubview(locationLabel)
         locationLabel.anchor(top: phoneLabel.bottomAnchor, left: leftAnchor, paddingTop: 5, paddingLeft: 10)
