@@ -11,6 +11,22 @@ import UIKit
 class SearchResultsHeaderView: UIView {
     //MARK: - Properties
     
+    private let bottomBorder: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.8934659958, green: 0.8898292184, blue: 0.9108516574, alpha: 1)
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return view
+    }()
+    
+    private let searchField: UITextField = {
+        let tf = UITextField()
+        let placeholder = NSAttributedString(string: "Enter a city to work at", attributes: [.foregroundColor: UIColor.lightGray,
+                                                                      .font: UIFont(name: "Avenir", size: 16) ?? UIFont.systemFont(ofSize: 16)])
+        tf.attributedPlaceholder = placeholder
+        tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        return tf
+    }()
+    
     var query: String
     
     private lazy var searchFieldContainer: UIView = {
@@ -22,7 +38,7 @@ class SearchResultsHeaderView: UIView {
         view.layer.shadowOpacity = 0.3
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 3
-        
+                
         let iv = UIImageView()
         iv.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
         
@@ -37,14 +53,6 @@ class SearchResultsHeaderView: UIView {
         return view
     }()
     
-    private let searchField: UITextField = {
-        let tf = UITextField()
-        let placeholder = NSAttributedString(string: "Enter a city to work at", attributes: [.foregroundColor: UIColor.lightGray,
-                                                                      .font: UIFont(name: "Avenir", size: 16) ?? UIFont.systemFont(ofSize: 16)])
-        tf.attributedPlaceholder = placeholder
-        tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        return tf
-    }()
     
     //MARK: - Lifecycle
     
@@ -55,6 +63,9 @@ class SearchResultsHeaderView: UIView {
         searchField.text = self.query
         addSubview(searchFieldContainer)
         searchFieldContainer.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
+        
+        addSubview(bottomBorder)
+        bottomBorder.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
     }
     
     required init?(coder: NSCoder) {

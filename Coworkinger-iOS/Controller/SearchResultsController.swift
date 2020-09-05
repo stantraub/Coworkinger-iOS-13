@@ -19,20 +19,23 @@ class SearchResultsController: UIViewController {
     lazy var searchHeaderView = SearchResultsHeaderView(query: query)
     
     private lazy var collectionView: UICollectionView = {
-//        let frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height)
+        let frame = CGRect(x: 0, y: 150, width: view.frame.width, height: view.frame.height)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: frame, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
         cv.showsVerticalScrollIndicator = false
+        cv.backgroundColor = .white
         cv.register(SpaceCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         return cv
     }()
     
-    private var spaces = [SpaceSearchCell]() {
-        didSet { collectionView.reloadData() }
+    private var spaces = [SearchCardCell]() {
+        didSet {
+            collectionView.reloadData()
+        }
     }
     
     //MARK: - Lifecycle
@@ -54,6 +57,11 @@ class SearchResultsController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barStyle = .default
+    }
+    
     //MARK: - Selectors
     
     func fetchSpaces(withQuery query: String) {
@@ -67,15 +75,22 @@ class SearchResultsController: UIViewController {
                 guard let resp = value as? NSDictionary else { return }
                 guard let businesses = resp.value(forKey: "businesses") as? [NSDictionary] else { return }
                 
+                var result = [SearchCardCell]()
+                
                 for business in businesses {
                     guard let name = business.value(forKey: "name") as? String else { return }
                     guard let id = business.value(forKey: "id") as? String else { return }
                     
-                    let space = SpaceSearchCell(id: id, name: name)
+                    let imageUrl = business.value(forKey: "image_url") as? String
+                    guard let reviewCount = business.value(forKey: "review_count") as? Int else { return }
+                    guard let rating = business.value(forKey: "rating") as? Double else { return }
                     
-                    self.spaces.append(space)
+                    let space = SearchCardCell(id: id, name: name, imageUrl: imageUrl, rating: rating, reviewCount: reviewCount)
                     
+                    result.append(space)
                 }
+                
+                self.spaces = result
             case let .failure(error):
                 print(error)
             }
@@ -88,17 +103,17 @@ class SearchResultsController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(searchHeaderView)
-        searchHeaderView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 100)
+        searchHeaderView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 106)
+//        searchHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
         
         view.addSubview(collectionView)
-        collectionView.anchor(top: searchHeaderView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
-//        searchHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+
     }
 }
 
 //MARK: - UICollectionViewDataSource
 
-extension SearchResultsController: UICollectionViewDataSource {
+extension SearchResultsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return spaces.count
     }
@@ -106,29 +121,33 @@ extension SearchResultsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let space = spaces[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SpaceCell
-        cell.space = SpaceSearchCell(id: space.id, name: space.name)
+        cell.space = SearchCardCell(id: space.id, name: space.name, imageUrl: space.imageUrl, rating: space.rating, reviewCount: space.reviewCount)
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let spaceID = spaces[indexPath.row].id else { return }
-//        let controller = SpaceShowController(spaceID: spaceID)
-//        navigationController?.pushViewController(controller, animated: true)
-//    }
+}
+
+//MARK: - UICollectionViewDataSource
+
+extension SearchResultsController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let spaceID = spaces[indexPath.row].id else { return }
+        let controller = SpaceShowController(spaceID: spaceID)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension SearchResultsController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width * 0.9, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 20
     }
 }

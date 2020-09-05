@@ -30,6 +30,7 @@
 		112CD29824F2FE670045EE98 /* SpaceShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD29724F2FE670045EE98 /* SpaceShowViewModel.swift */; };
 		11906BB025004E70009326D7 /* DiscoverCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11906BAF25004E70009326D7 /* DiscoverCityCell.swift */; };
 		11A4C84E2501C2710038C2DA /* SearchResultsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4C84D2501C2710038C2DA /* SearchResultsHeaderView.swift */; };
+		11A4C8502502EDB50038C2DA /* SearchCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4C84F2502EDB50038C2DA /* SearchCardViewModel.swift */; };
 		11A5ECC724CFFD4F00C41A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */; };
 		11A5ECC924CFFD4F00C41A3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */; };
 		11A5ECD324CFFD5200C41A3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A5ECD124CFFD5200C41A3C /* LaunchScreen.storyboard */; };
@@ -67,6 +68,7 @@
 		112CD29724F2FE670045EE98 /* SpaceShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShowViewModel.swift; sourceTree = "<group>"; };
 		11906BAF25004E70009326D7 /* DiscoverCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCityCell.swift; sourceTree = "<group>"; };
 		11A4C84D2501C2710038C2DA /* SearchResultsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsHeaderView.swift; sourceTree = "<group>"; };
+		11A4C84F2502EDB50038C2DA /* SearchCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModel.swift; sourceTree = "<group>"; };
 		11A5ECC324CFFD4F00C41A3C /* Coworkinger-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coworkinger-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5ECC624CFFD4F00C41A3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A5ECC824CFFD4F00C41A3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				112CD27024EB0E360045EE98 /* AuthenticationViewModel.swift */,
 				112CD28424EDA9AC0045EE98 /* ProfileViewModel.swift */,
 				112CD29724F2FE670045EE98 /* SpaceShowViewModel.swift */,
+				11A4C84F2502EDB50038C2DA /* SearchCardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				112CD26B24EB0A560045EE98 /* Service.swift in Sources */,
 				112CD26D24EB0A6D0045EE98 /* AuthService.swift in Sources */,
 				112CD28D24EEFCBB0045EE98 /* SpaceShowController.swift in Sources */,
+				11A4C8502502EDB50038C2DA /* SearchCardViewModel.swift in Sources */,
 				112CD28724EDACB80045EE98 /* ProfileCell.swift in Sources */,
 				112CD28524EDA9AC0045EE98 /* ProfileViewModel.swift in Sources */,
 				112CD27524EB543B0045EE98 /* User.swift in Sources */,

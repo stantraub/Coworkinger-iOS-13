@@ -38,8 +38,13 @@ struct Space {
 //    var hours: SpaceHours
 }
 
-struct SpaceSearchCell {
+struct SearchCardCell {
     var id: String?
-    var name: String?
-    //    var imageUrl: String?
+    var name: String
+    var imageUrl: String?
+    var rating: Double?
+    var reviewCount: Int?
+//    var phone: String?
+//    var city: String?
+    
 }
