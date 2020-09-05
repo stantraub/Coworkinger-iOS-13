@@ -17,15 +17,6 @@ struct SpaceHours {
     
 }
 
-struct SpaceLocation {
-    var address: String?
-    var city: String?
-    var zipCode: String?
-    var country: String?
-    var state: String?
-//    var coordinates?: SpaceCoordinates
-}
-
 struct Space {
     var id: String?
     var name: String?
@@ -44,7 +35,9 @@ struct SearchCardCell {
     var imageUrl: String?
     var rating: Double?
     var reviewCount: Int?
-//    var phone: String?
-//    var city: String?
-    
+    var state: String?
+    var phone: String?
+    var city: String?
+    var zipCode: String?
+    var country: String?
 }

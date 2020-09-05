@@ -12,6 +12,15 @@ import SDWebImage
 class SpaceCell: UICollectionViewCell {
     //MARK: - Properties
     
+    private let imageView = UIImageView()
+    
+    private let saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
+        button.setDimensions(height: 30, width: 30)
+        return button
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir", size: 18)
@@ -30,8 +39,18 @@ class SpaceCell: UICollectionViewCell {
         label.font = UIFont(name: "Avenir", size: 16)
         return label
     }()
-
-
+    
+    private let locationLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir", size: 16)
+        return label
+    }()
+    
+    private let phoneLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir", size: 16)
+        return label
+    }()
     
     var space: SearchCardCell? {
         didSet {
@@ -53,6 +72,10 @@ class SpaceCell: UICollectionViewCell {
     
     //MARK: - Selectors
     
+    @objc func saveButtonTapped() {
+        print("save this space")
+    }
+    
     //MARK: - Helpers
     
     func configureUI() {
@@ -68,17 +91,20 @@ class SpaceCell: UICollectionViewCell {
     }
     
     func configureSpace() {
-        guard let space = space else { return }
+        guard let space = self.space else { return }
  
-        let imageView = UIImageView()
-        
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.sd_setImage(with: URL(string: space.imageUrl ?? "https://www.dwrl.utexas.edu/wp-content/uploads/2017/02/yelp-logo-vector.jpg"))
         
         addSubview(imageView)
-        imageView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, width: frame.width, height: frame.height / 2)
+        imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: 225)
+//        imageView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, width: frame.width, height: 225)
         imageView.setDimensions(height: frame.width / 2, width: frame.width)
+        
+        addSubview(saveButton)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        saveButton.anchor(top: topAnchor, right: rightAnchor, paddingTop: 10, paddingRight: 10)
         
         let reviewInfoStack = UIStackView(arrangedSubviews: [reviewStar, reviewsLabel])
         reviewInfoStack.axis = .horizontal
@@ -91,8 +117,12 @@ class SpaceCell: UICollectionViewCell {
         titleLabel.text = space.name
         titleLabel.anchor(top: reviewInfoStack.bottomAnchor, left: leftAnchor, paddingTop: 5, paddingLeft: 10)
         
+        phoneLabel.text = space.phone
+        addSubview(phoneLabel)
+        phoneLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, paddingTop: 5, paddingLeft: 10)
         
-
-    
+        locationLabel.text = "\(space.city ?? "") · \(space.country ?? "")"
+        addSubview(locationLabel)
+        locationLabel.anchor(top: phoneLabel.bottomAnchor, left: leftAnchor, paddingTop: 5, paddingLeft: 10)
     }
 }

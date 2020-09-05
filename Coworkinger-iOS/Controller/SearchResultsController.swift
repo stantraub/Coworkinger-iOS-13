@@ -84,8 +84,13 @@ class SearchResultsController: UIViewController {
                     let imageUrl = business.value(forKey: "image_url") as? String
                     guard let reviewCount = business.value(forKey: "review_count") as? Int else { return }
                     guard let rating = business.value(forKey: "rating") as? Double else { return }
+                    guard let phone = business.value(forKey: "display_phone") as? String else { return }
+                    guard let city = business.value(forKeyPath: "location.city") as? String else { return }
+                    guard let zipCode = business.value(forKeyPath: "location.zip_code") as? String else { return }
+                    guard let country = business.value(forKeyPath: "location.country") as? String else { return }
+                    guard let state = business.value(forKeyPath: "location.state") as? String else { return }
                     
-                    let space = SearchCardCell(id: id, name: name, imageUrl: imageUrl, rating: rating, reviewCount: reviewCount)
+                    let space = SearchCardCell(id: id, name: name, imageUrl: imageUrl, rating: rating, reviewCount: reviewCount, state: state, phone: phone, city: city, zipCode: zipCode, country: country)
                     
                     result.append(space)
                 }
@@ -121,7 +126,18 @@ extension SearchResultsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let space = spaces[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SpaceCell
-        cell.space = SearchCardCell(id: space.id, name: space.name, imageUrl: space.imageUrl, rating: space.rating, reviewCount: space.reviewCount)
+        cell.space = SearchCardCell(
+            id: space.id,
+            name: space.name,
+            imageUrl: space.imageUrl,
+            rating: space.rating,
+            reviewCount: space.reviewCount,
+            state: space.state,
+            phone: space.phone,
+            city: space.city,
+            zipCode: space.zipCode,
+            country: space.country
+        )
         return cell
     }
 }
