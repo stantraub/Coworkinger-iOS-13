@@ -20,10 +20,11 @@ class SpaceShowPhotoCell: UICollectionViewCell {
         super.init(frame: frame)
          
         imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
         
         addSubview(imageView)
         imageView.fillSuperview()
+        imageView.clipsToBounds = true
+
     }
     
 

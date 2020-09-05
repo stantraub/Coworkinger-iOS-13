@@ -61,11 +61,6 @@ class SpaceShowController: UIViewController {
         cv.showsHorizontalScrollIndicator = false
         cv.register(SpaceShowPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradientLayer.locations = [0.0, 0.5]
-        gradientLayer.frame = frame
-        cv.layer.addSublayer(gradientLayer)
-        
         return cv
     }()
     
@@ -78,6 +73,7 @@ class SpaceShowController: UIViewController {
         view.backgroundColor = .white
         fetchSpace(withID: spaceID)
         configureUI()
+        
     }
 
     
@@ -137,13 +133,24 @@ class SpaceShowController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         view.addSubview(collectionView)
+        gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradientLayer.locations = [0.0, 0.15]
+        gradientLayer.frame = view.frame
+        view.layer.addSublayer(gradientLayer)
+
     }
 
 }
 
 //MARK: - UICollectionViewDelegate
 
-extension SpaceShowController: UICollectionViewDelegate {
+//extension SpaceShowController: UICollectionViewDelegate {
+//
+//}
+
+//MARK: - UICollectionViewDataSource
+
+extension SpaceShowController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.imageURLs.count ?? 3
     }
@@ -155,17 +162,11 @@ extension SpaceShowController: UICollectionViewDelegate {
     }
 }
 
-//MARK: - UICollectionViewDataSource
-
-extension SpaceShowController: UICollectionViewDataSource {
-    
-}
-
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension SpaceShowController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 350, height: 350)
+        return CGSize(width: view.frame.width, height: 350)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
