@@ -35,17 +35,7 @@ class SpaceShowPhotoCell: UICollectionViewCell {
 }
 
 
-    //MARK: - Helpers
     
-//    func configureActionButtons() {
-//        addSubview(backButton)
-//        backButton.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, paddingLeft: 30)
-//        backButton.setDimensions(height: 30, width: 30)
-//
-//        addSubview(saveButton)
-//        saveButton.anchor(top: safeAreaLayoutGuide.topAnchor, right: rightAnchor, paddingRight: 30)
-//        saveButton.setDimensions(height: 30, width: 30)
-//
-//    }
+
     
 

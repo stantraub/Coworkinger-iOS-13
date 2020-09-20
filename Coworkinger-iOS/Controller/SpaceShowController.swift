@@ -44,7 +44,9 @@ class SpaceShowController: UIViewController {
 
     private let saveButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
+        let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
+
+        button.setImage(UIImage(systemName: "heart", withConfiguration: boldConfig)?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
         button.addTarget(self, action: #selector(handleLikeTapped), for: .touchUpInside)
         return button
     }()
@@ -64,8 +66,6 @@ class SpaceShowController: UIViewController {
         return cv
     }()
     
-    
-    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -73,14 +73,11 @@ class SpaceShowController: UIViewController {
         view.backgroundColor = .white
         fetchSpace(withID: spaceID)
         configureUI()
-        
     }
-
     
     init(spaceID: String) {
         self.spaceID = spaceID
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -90,40 +87,39 @@ class SpaceShowController: UIViewController {
     //MARK: - Selectors
     
     @objc func handleBackButtonTapped() {
-        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func handleLikeTapped() {
-        
+        print("save this space")
     }
     
     //MARK: - API
     
     func fetchSpace(withID id: String) {
-         let headers: HTTPHeaders = [
+        let headers: HTTPHeaders = [
             "Authorization": "Bearer zviqn8ofmwNsQdc578yv18QisgZ__djepMcpt7mEldkAn6XFo1AtNO3KwLnGBRw_GVwOD_ti_S7vuowhnohSek8Qh7djrC5YHYYcYMwDfL8Ng9GRqmfXjELvksgwX3Yx"
-            ]
+        ]
                
-           AF.request("https://api.yelp.com/v3/businesses/\(spaceID)", headers: headers).responseJSON { (response) in
-               switch response.result {
-               case let .success(value):
-                    guard let resp = value as? NSDictionary else { return }
-                    
-                    guard let id = resp.value(forKey: "id") as? String else { return }
-//                    guard let phone = resp.value(forKey: "display_phone") as? String else { return }
-//                    guard let address = resp.value(forKeyPath: "location.display_address") as? String else { return }
-                    guard let name = resp.value(forKey: "name") as? String else { return }
-                    guard let photos = resp.value(forKey: "photos") as? [String] else { return }
-                    guard let rating = resp.value(forKey: "rating") as? Double else { return }
-                    guard let reviewCount = resp.value(forKey: "review_count") as? Int else { return }
+        AF.request("https://api.yelp.com/v3/businesses/\(spaceID)", headers: headers).responseJSON { (response) in
+           switch response.result {
+           case let .success(value):
+                guard let resp = value as? NSDictionary else { return }
                 
-                    self.space = Space(id: id, name: name, reviewCount: reviewCount, rating: rating, photos: photos)
-                    
+                guard let id = resp.value(forKey: "id") as? String else { return }
+                guard let phone = resp.value(forKey: "display_phone") as? String else { return }
+//                    guard let address = resp.value(forKeyPath: "location.display_address") as? String else { return }
+                guard let name = resp.value(forKey: "name") as? String else { return }
+                guard let photos = resp.value(forKey: "photos") as? [String] else { return }
+                guard let rating = resp.value(forKey: "rating") as? Double else { return }
+                guard let reviewCount = resp.value(forKey: "review_count") as? Int else { return }
+            
+                self.space = Space(id: id, name: name, phone: phone, reviewCount: reviewCount, rating: rating, photos: photos)
 
-               case let .failure(error):
-                   print(error)
-               }
+           case let .failure(error):
+               print(error)
            }
+        }
     }
     
     //MARK: - Helpers
@@ -133,13 +129,20 @@ class SpaceShowController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         view.addSubview(collectionView)
+        
         gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradientLayer.locations = [0.0, 0.15]
+        gradientLayer.locations = [0.0, 0.1]
         gradientLayer.frame = view.frame
         view.layer.addSublayer(gradientLayer)
+        
+        view.addSubview(backButton)
+        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingLeft: 25)
+        backButton.setDimensions(height: 30, width: 30)
 
+        view.addSubview(saveButton)
+        saveButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingRight: 25)
+        saveButton.setDimensions(height: 30, width: 30)
     }
-
 }
 
 //MARK: - UICollectionViewDelegate

@@ -22,6 +22,7 @@ struct Space {
     var name: String?
 //    var isClosed: String?
 //    var displayPhone: String?
+    var phone: String?
     var reviewCount: Int?
     var rating: Double?
 //    var location: SpaceLocation
